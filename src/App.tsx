@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaPlus } from "react-icons/fa";
+import { FaPlus, FaTrash } from "react-icons/fa";
 
 function App() {
   const [tasks, setTasks] = useState<{ task: string; completed: boolean }[]>(
@@ -53,7 +53,7 @@ function App() {
             </button>
           </form>
 
-          <div className="mt-4 flex flex-col">
+          <div className="p-4 mt-4 flex flex-col space-y-1">
             {tasks.map((task, index) => (
               <label
                 key={index}
