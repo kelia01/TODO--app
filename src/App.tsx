@@ -14,10 +14,10 @@ function App() {
     setInputVal("");
   };
 
-  const removeTask = ((e: React.FormEvent, id: number) => {
+  const removeTask = (e: React.FormEvent, id: number) => {
     e.preventDefault();
-    setTasks(prev => prev.filter((_, index) => id !== index))
-  })
+    setTasks((prev) => prev.filter((_, index) => id !== index));
+  };
 
   const toggleTask = (index: number) => {
     setTasks((prev) =>
@@ -29,7 +29,7 @@ function App() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    addTask(inputVal);
+    inputVal !== '' ? addTask(inputVal) : alert('You have no task');
   };
 
   return (
@@ -47,12 +47,12 @@ function App() {
               value={inputVal}
               placeholder="Add todo..."
               onChange={(e) => setInputVal(e.target.value)}
-              className="bg-white rounded-3xl shadow-gray-400 shadow px-3 py-2 mt-6 w-[22rem] pr-12"
+              className="bg-white rounded-3xl shadow-gray-400 shadow px-3 py-2 mt-6 ml-2 w-[20rem] pr-12"
             />
             <button
               type="submit"
               aria-label="Add todo"
-              className="bg-green-700 absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full flex items-center justify-center cursor-pointer"
+              className="bg-green-700 absolute right-3 top-1/2 bottom-1/2 -translate-y-1/2 w-5 h-5 rounded-full flex items-center justify-center cursor-pointer"
             >
               <FaPlus className="text-white text-sm" />
             </button>
@@ -76,8 +76,12 @@ function App() {
                 >
                   {task.task}
                 </p>
-                <button className="text-red-600 absolute right-6"
-                onClick={(e) => removeTask(e, index)}><FaTrash /></button>
+                <button
+                  className="text-red-600 absolute right-6 cursor-pointer"
+                  onClick={(e) => removeTask(e, index)}
+                >
+                  <FaTrash />
+                </button>
               </label>
             ))}
           </div>
