@@ -14,6 +14,11 @@ function App() {
     setInputVal("");
   };
 
+  const removeTask = ((e: React.FormEvent, id: number) => {
+    e.preventDefault();
+    setTasks(prev => prev.filter((_, index) => id !== index))
+  })
+
   const toggleTask = (index: number) => {
     setTasks((prev) =>
       prev.map((task, i) =>
@@ -57,7 +62,7 @@ function App() {
             {tasks.map((task, index) => (
               <label
                 key={index}
-                className="flex items-center gap-3 bg-white p-2 rounded-lg shadow-sm"
+                className="relative flex items-center gap-3 bg-white p-2 rounded-lg shadow-sm"
               >
                 <input
                   type="checkbox"
@@ -71,6 +76,8 @@ function App() {
                 >
                   {task.task}
                 </p>
+                <button className="text-red-600 absolute right-6"
+                onClick={(e) => removeTask(e, index)}><FaTrash /></button>
               </label>
             ))}
           </div>
