@@ -1,7 +1,11 @@
+import Fetch from "./components/Fetch"
+
 
 const App = () => {
   return (
-    <div>App</div>
+    <div>
+      <Fetch  />
+    </div>
   )
 }
 
