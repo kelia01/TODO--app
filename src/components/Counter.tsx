@@ -19,18 +19,18 @@ const Counter = () => {
     setSeconds(10);
   };
   return (
-    <div className="flex justify-center items-center bg-cyan-600">
-      <div>
-        <h1 className="text-xl text-center">Counter</h1>
-        <p className="ml-3">{seconds}</p>
-        <div className="">
-          <button onClick={handleStart} className="rounded shadow bg-amber-500">
+    <div className="flex justify-center items-center bg-cyan-600 h-screen">
+      <div className="">
+        <h1 className="text-xl text-center bg-emerald-400">Counter</h1>
+        <p className="ml-3 text-lg ">{seconds}</p>
+        <div className="flex gap-3">
+          <button onClick={handleStart} className="rounded shadow bg-amber-500 px-3 py-2">
             Start
           </button>
-          <button onClick={handlePause} className="rounded shadow bg-amber-500">
+          <button onClick={handlePause} className="rounded shadow bg-amber-500 px-3 py-2">
             Pause
           </button>
-          <button onClick={handleReset} className="rounded shadow bg-amber-500">
+          <button onClick={handleReset} className="rounded shadow bg-amber-500 px-3 py-2">
             Reset
           </button>
         </div>
