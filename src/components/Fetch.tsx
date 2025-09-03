@@ -1,24 +1,35 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 type Post = {
   userId: number;
   id: number;
   title: string;
   body: string;
 };
-function useFetch(url): any {
-  const [posts, setPosts] = useState<Post[]>([]);
+function useFetch(url: string){
+  const [posts, setPosts] = useState<Post[] | null>(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState<null | string>(null);
 
   !posts ? setLoading(true) : setLoading(false);
 
   function refetch() {
     !posts
       ? useEffect(() => {
-          fetch(url)
-            .then((res) => res.json())
-            .then((data) => setPosts(data))
-            .catch((err) => setError(true));
+          const fetchData = async () => {
+            try{
+                const response = await fetch(url);
+                if(!response.ok){
+                    throw new Error(`HTTP error status: ${response.status}`)
+                }
+                const result = await response.json();
+                setPosts(result);
+            } catch(err) {
+                setError(err)
+            } finally {
+                setLoading(false);
+            }
+          }
+          fetchData();
         }, [url])
       : null;
     return { refetch, posts, loading, error };
