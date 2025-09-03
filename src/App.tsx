@@ -1,9 +1,8 @@
-import Counter from "./components/Counter"
-
+import Form from "./components/Form"
 const App = () => {
   return (
     <div className="">
-      <Counter />
+      <Form />
     </div>
   )
 }
