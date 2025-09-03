@@ -1,9 +1,9 @@
-import Layout from "./components/Layout"
+import Counter from "./components/Counter"
 
 const App = () => {
   return (
     <div className="">
-      <Layout />
+      <Counter />
     </div>
   )
 }
