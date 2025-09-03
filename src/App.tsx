@@ -1,8 +1,8 @@
-import Form from "./components/Form"
+import Number from "./components/Number"
 const App = () => {
   return (
-    <div className="">
-      <Form />
+    <div>
+      <Number />
     </div>
   )
 }
