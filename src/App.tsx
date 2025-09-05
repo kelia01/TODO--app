@@ -1,8 +1,8 @@
-import Number from "./components/Number"
+import Message from "./components/Message"
+
 const App = () => {
   return (
     <div>
-      <Number />
     </div>
   )
 }
